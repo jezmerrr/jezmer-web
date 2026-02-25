@@ -304,7 +304,8 @@ function AboutSection() {
                 <img
                   src={profileImg}
                   alt="Jezmer Kyle Ramos"
-                  className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full object-cover object-top border-4 border-background"
+                  className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full object-cover border-4 border-background"
+                  style={{ objectPosition: "35% 20%" }}
                   data-testid="img-profile"
                 />
               </div>
