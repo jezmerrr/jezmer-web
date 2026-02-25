@@ -24,6 +24,7 @@ import {
   Users,
 } from "lucide-react";
 import { SiSolana, SiReact, SiTypescript, SiNodedotjs, SiGithub } from "react-icons/si";
+import profileImg from "@assets/image_1772023164585.png";
 
 function AnimatedSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef(null);
@@ -296,9 +297,20 @@ function AboutSection() {
               </div>
             </div>
 
-            <div className="relative">
-              <div className="relative rounded-md border border-border bg-card p-6 font-mono text-sm">
-                <div className="flex items-center gap-2 mb-4">
+            <div className="relative flex flex-col items-center gap-8">
+              <div className="relative">
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary via-chart-3 to-chart-5 blur-sm opacity-60" />
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary via-chart-3 to-chart-5" />
+                <img
+                  src={profileImg}
+                  alt="Jezmer Kyle Ramos"
+                  className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full object-cover object-top border-4 border-background"
+                  data-testid="img-profile"
+                />
+              </div>
+
+              <div className="w-full relative rounded-md border border-border bg-card p-5 font-mono text-sm">
+                <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 rounded-full bg-destructive/60" />
                   <div className="w-3 h-3 rounded-full bg-yellow-500/60 dark:bg-yellow-400/60" />
                   <div className="w-3 h-3 rounded-full bg-green-500/60 dark:bg-green-400/60" />
@@ -309,11 +321,6 @@ function AboutSection() {
                   <p className="pl-4"><span className="text-primary">name</span>: <span className="text-green-500 dark:text-green-400">"Jezmer Kyle G. Ramos"</span>,</p>
                   <p className="pl-4"><span className="text-primary">role</span>: <span className="text-green-500 dark:text-green-400">"Web3 Developer"</span>,</p>
                   <p className="pl-4"><span className="text-primary">school</span>: <span className="text-green-500 dark:text-green-400">"DLSU Manila"</span>,</p>
-                  <p className="pl-4"><span className="text-primary">focus</span>: [</p>
-                  <p className="pl-8"><span className="text-green-500 dark:text-green-400">"Blockchain"</span>,</p>
-                  <p className="pl-8"><span className="text-green-500 dark:text-green-400">"Solana"</span>,</p>
-                  <p className="pl-8"><span className="text-green-500 dark:text-green-400">"Full Stack"</span>,</p>
-                  <p className="pl-4">],</p>
                   <p className="pl-4"><span className="text-primary">status</span>: <span className="text-green-500 dark:text-green-400">"Building the future"</span>,</p>
                   <p>{"}"}</p>
                 </div>
