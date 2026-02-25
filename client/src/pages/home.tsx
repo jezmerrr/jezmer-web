@@ -24,7 +24,7 @@ import {
   Users,
 } from "lucide-react";
 import { SiSolana, SiReact, SiTypescript, SiNodedotjs, SiGithub } from "react-icons/si";
-import profileImg from "@assets/image_1772023164585.png";
+import profileImg from "@assets/image_1772023799508.png";
 
 function AnimatedSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef(null);
@@ -305,7 +305,7 @@ function AboutSection() {
                   src={profileImg}
                   alt="Jezmer Kyle Ramos"
                   className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full object-cover border-4 border-background"
-                  style={{ objectPosition: "35% 20%", transform: "scaleX(-1)" }}
+                  style={{ objectPosition: "center 15%" }}
                   data-testid="img-profile"
                 />
               </div>
