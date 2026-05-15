@@ -101,6 +101,7 @@ function Navbar() {
   const navItems = [
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
+    { label: "Projects", href: "#projects" },
     { label: "Education", href: "#education" },
     { label: "Contact", href: "#contact" },
   ];
@@ -132,7 +133,7 @@ function Navbar() {
             </a>
           ))}
         </div>
-        <a href="mailto:jkgramos14@gmail.com" data-testid="button-hire-me">
+        <a href="mailto:business@jezmerkyleramos.com" data-testid="button-hire-me">
           <Button size="sm">Hire Me</Button>
         </a>
       </div>
@@ -507,6 +508,59 @@ function EducationSection() {
   );
 }
 
+function ProjectsSection() {
+  return (
+    <section id="projects" className="relative py-24 sm:py-32">
+      <div className="max-w-6xl mx-auto px-6">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-xs font-mono text-primary tracking-widest uppercase mb-3">Projects</p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+            Live Products
+          </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Real tools built for real users in the Web3 ecosystem.
+          </p>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <Card className="relative group p-8 border-card-border bg-card hover-elevate max-w-2xl mx-auto">
+            <div className="flex items-start gap-5">
+              <div className="flex items-center justify-center w-14 h-14 rounded-md bg-gradient-to-br from-primary to-chart-3 shrink-0">
+                <LineChart className="w-7 h-7 text-white" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-3 flex-wrap mb-2">
+                  <h3 className="font-semibold text-lg tracking-tight">Airdrop Hub</h3>
+                  <Badge variant="secondary" className="text-xs font-mono">
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5" />
+                    Live
+                  </Badge>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  A real-time airdrop tracking platform for Solana wallets. Monitor wallet activity,
+                  track incoming airdrops, and stay on top of on-chain token distributions — all in one dashboard.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["Solana", "React", "TypeScript", "Web3.js", "Real-time Data"].map((tag) => (
+                    <span key={tag} className="px-2.5 py-1 text-xs font-mono rounded-md bg-primary/10 text-primary border border-primary/20">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a href="https://app.airdrop-hub.com" target="_blank" rel="noopener noreferrer" data-testid="link-airdrop-hub">
+                  <Button size="sm" className="gap-2">
+                    <Globe className="w-4 h-4" /> View Live App <ExternalLink className="w-3.5 h-3.5" />
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </Card>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
+
 function DifferentiatorSection() {
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden">
@@ -560,7 +614,7 @@ function ContactSection() {
             <Card className="p-8 border-card-border bg-card" data-testid="card-contact">
               <div className="space-y-5">
                 <a
-                  href="mailto:jkgramos14@gmail.com"
+                  href="mailto:business@jezmerkyleramos.com"
                   className="flex items-center gap-4 p-4 rounded-md bg-muted/50 border border-border transition-colors hover:border-primary/30 group"
                   data-testid="link-email"
                 >
@@ -569,7 +623,7 @@ function ContactSection() {
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">Email</p>
-                    <p className="text-sm font-medium">jkgramos14@gmail.com</p>
+                    <p className="text-sm font-medium">business@jezmerkyleramos.com</p>
                   </div>
                   <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto" />
                 </a>
@@ -601,7 +655,7 @@ function ContactSection() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-border text-center">
-                <a href="mailto:jkgramos14@gmail.com" data-testid="button-send-email">
+                <a href="mailto:business@jezmerkyleramos.com" data-testid="button-send-email">
                   <Button className="w-full gap-2">
                     <Mail className="w-4 h-4" /> Send Me an Email
                   </Button>
@@ -641,6 +695,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <SkillsSection />
+      <ProjectsSection />
       <EducationSection />
       <DifferentiatorSection />
       <ContactSection />
