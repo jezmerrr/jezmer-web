@@ -22,6 +22,10 @@ import {
   LineChart,
   Lightbulb,
   Users,
+  Briefcase,
+  Database,
+  Server,
+  Sparkles,
 } from "lucide-react";
 import { SiSolana, SiReact, SiTypescript, SiNodedotjs, SiGithub } from "react-icons/si";
 import profileImg from "@assets/image_1772023799508.png";
@@ -81,7 +85,7 @@ function GridBackground() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: `linear-gradient(hsl(258 90% 62% / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(258 90% 62% / 0.4) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(hsl(0 0% 100% / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(0 0% 100% / 0.4) 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
         }}
       />
@@ -102,6 +106,7 @@ function Navbar() {
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
     { label: "Education", href: "#education" },
     { label: "Contact", href: "#contact" },
   ];
@@ -176,7 +181,7 @@ function HeroSection() {
             data-testid="text-hero-name"
           >
             <span className="block text-foreground">Jezmer Kyle</span>
-            <span className="block bg-gradient-to-r from-primary via-chart-3 to-chart-5 bg-clip-text text-transparent">
+            <span className="block text-muted-foreground">
               Ramos
             </span>
           </motion.h1>
@@ -268,7 +273,7 @@ function AboutSection() {
               <p className="text-xs font-mono text-primary tracking-widest uppercase mb-3">About Me</p>
               <h2 className="text-3xl sm:text-4xl font-bold mb-6 tracking-tight" data-testid="text-about-title">
                 A Different Kind of
-                <span className="bg-gradient-to-r from-primary to-chart-3 bg-clip-text text-transparent"> CS Student</span>
+                <span className="text-muted-foreground"> CS Student</span>
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
@@ -300,12 +305,10 @@ function AboutSection() {
 
             <div className="relative flex flex-col items-center gap-8">
               <div className="relative">
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary via-chart-3 to-chart-5 blur-sm opacity-60" />
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary via-chart-3 to-chart-5" />
                 <img
                   src={profileImg}
                   alt="Jezmer Kyle Ramos"
-                  className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full object-cover border-4 border-background"
+                  className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full object-cover border border-border ring-1 ring-border"
                   style={{ objectPosition: "center 15%" }}
                   data-testid="img-profile"
                 />
@@ -508,6 +511,30 @@ function EducationSection() {
   );
 }
 
+const projects = [
+  {
+    title: "Airdrop Hub",
+    status: "Live",
+    accent: "from-primary to-chart-3",
+    icon: Wallet,
+    description:
+      "A real-time airdrop tracking platform for Solana wallets. Monitor wallet activity, track incoming airdrops, and stay on top of on-chain token distributions — all in one dashboard.",
+    tags: ["Solana", "React", "TypeScript", "Web3.js", "Real-time Data"],
+    primary: { label: "View Live App", href: "https://app.airdrop-hub.com", icon: Globe },
+  },
+  {
+    title: "Katalyst Iceberg",
+    status: "Live · Production",
+    accent: "from-chart-3 to-chart-5",
+    icon: Server,
+    description:
+      "A self-hosted media CDN that replaced Cloudinary for Katalyst CRM. Go API on Railway, Cloudflare R2 storage, Postgres catalog, custom domain at cdn.katalyst-crm.com — 6,000+ assets migrated and served at production scale.",
+    tags: ["Go", "Cloudflare R2", "Postgres", "Railway", "S3 API"],
+    primary: { label: "GitHub Repo", href: "https://github.com/IRCHrocks25/katalyst-iceberg", icon: SiGithub },
+    secondary: { label: "cdn.katalyst-crm.com", href: "https://cdn.katalyst-crm.com", icon: Globe },
+  },
+];
+
 function ProjectsSection() {
   return (
     <section id="projects" className="relative py-24 sm:py-32">
@@ -518,44 +545,140 @@ function ProjectsSection() {
             Live Products
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Real tools built for real users in the Web3 ecosystem.
+            Production systems serving real users — Web3 dashboards and developer infrastructure.
           </p>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.1}>
-          <Card className="relative group p-8 border-card-border bg-card hover-elevate max-w-2xl mx-auto">
-            <div className="flex items-start gap-5">
-              <div className="flex items-center justify-center w-14 h-14 rounded-md bg-gradient-to-br from-primary to-chart-3 shrink-0">
-                <LineChart className="w-7 h-7 text-white" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-3 flex-wrap mb-2">
-                  <h3 className="font-semibold text-lg tracking-tight">Airdrop Hub</h3>
-                  <Badge variant="secondary" className="text-xs font-mono">
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5" />
-                    Live
-                  </Badge>
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects.map((project, idx) => (
+            <AnimatedSection key={project.title} delay={0.1 + idx * 0.08}>
+              <Card className="relative group p-8 h-full border-card-border bg-card hover-elevate flex flex-col" data-testid={`card-project-${idx}`}>
+                <div className="flex items-start gap-4 mb-4">
+                  <div className={`flex items-center justify-center w-11 h-11 rounded-md bg-gradient-to-br ${project.accent} shrink-0`}>
+                    <project.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <h3 className="font-semibold text-lg tracking-tight">{project.title}</h3>
+                    </div>
+                    <Badge variant="secondary" className="text-[10px] font-mono">
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5" />
+                      {project.status}
+                    </Badge>
+                  </div>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                  A real-time airdrop tracking platform for Solana wallets. Monitor wallet activity,
-                  track incoming airdrops, and stay on top of on-chain token distributions — all in one dashboard.
+
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+                  {project.description}
                 </p>
+
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {["Solana", "React", "TypeScript", "Web3.js", "Real-time Data"].map((tag) => (
+                  {project.tags.map((tag) => (
                     <span key={tag} className="px-2.5 py-1 text-xs font-mono rounded-md bg-primary/10 text-primary border border-primary/20">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <a href="https://app.airdrop-hub.com" target="_blank" rel="noopener noreferrer" data-testid="link-airdrop-hub">
-                  <Button size="sm" className="gap-2">
-                    <Globe className="w-4 h-4" /> View Live App <ExternalLink className="w-3.5 h-3.5" />
-                  </Button>
-                </a>
-              </div>
-            </div>
-          </Card>
+
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  <a href={project.primary.href} target="_blank" rel="noopener noreferrer" data-testid={`link-project-${idx}-primary`}>
+                    <Button size="sm" className="gap-2">
+                      <project.primary.icon className="w-4 h-4" /> {project.primary.label} <ExternalLink className="w-3.5 h-3.5" />
+                    </Button>
+                  </a>
+                  {project.secondary && (
+                    <a href={project.secondary.href} target="_blank" rel="noopener noreferrer" data-testid={`link-project-${idx}-secondary`}>
+                      <Button size="sm" variant="outline" className="gap-2">
+                        <project.secondary.icon className="w-4 h-4" /> {project.secondary.label}
+                      </Button>
+                    </a>
+                  )}
+                </div>
+              </Card>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const experience = [
+  {
+    company: "Industry Rockstar Switzerland GmbH",
+    role: "Software Engineer · Katek AI Division",
+    location: "Basel, Switzerland (Remote)",
+    period: "May 2026 — Present",
+    accent: "from-primary via-chart-3 to-chart-5",
+    bullets: [
+      "Built and shipped Katalyst Iceberg — a self-hosted media CDN replacing Cloudinary across the Katalyst CRM platform (Go, Cloudflare R2, Postgres, custom domain).",
+      "Migrated 6,000+ production assets from Cloudinary with zero downtime and full URL-level parity.",
+      "Contributed to the katalyst-crm.com landing page, GDPR cookie consent integration, and legal pages (privacy + T&C) shipped to production.",
+      "Working under the Katek AI Division (Sonia Willcox, Director) on AI tooling and product infrastructure.",
+    ],
+    tags: ["Go", "TypeScript", "Cloudflare", "Postgres", "Railway", "AI Tooling"],
+  },
+];
+
+function ExperienceSection() {
+  return (
+    <section id="experience" className="relative py-24 sm:py-32">
+      <GridBackground />
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-xs font-mono text-primary tracking-widest uppercase mb-3">Experience</p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-experience-title">
+            Where I'm Working Now
+          </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Engineering production systems for a Swiss-based AI and CRM company.
+          </p>
         </AnimatedSection>
+
+        <div className="max-w-3xl mx-auto space-y-6">
+          {experience.map((job, idx) => (
+            <AnimatedSection key={job.company} delay={0.1 + idx * 0.08}>
+              <Card className="relative p-6 sm:p-8 border-card-border bg-card hover-elevate" data-testid={`card-experience-${idx}`}>
+                <div className="flex items-start gap-4 mb-5">
+                  <div className={`flex items-center justify-center w-12 h-12 rounded-md bg-gradient-to-br ${job.accent} shrink-0`}>
+                    <Briefcase className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="font-semibold text-base sm:text-lg tracking-tight">{job.company}</h3>
+                      <Badge variant="secondary" className="text-[10px] font-mono">
+                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5 animate-pulse" />
+                        Current
+                      </Badge>
+                    </div>
+                    <p className="text-sm text-primary font-medium mt-1">{job.role}</p>
+                    <div className="flex items-center gap-4 mt-1.5 text-xs text-muted-foreground flex-wrap">
+                      <span className="inline-flex items-center gap-1.5"><MapPin className="w-3 h-3" />{job.location}</span>
+                      <span className="font-mono">{job.period}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <ul className="space-y-2.5 mb-5">
+                  {job.bullets.map((b, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground leading-relaxed">
+                      <Sparkles className="w-3.5 h-3.5 mt-1 text-primary/60 shrink-0" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-2">
+                  {job.tags.map((tag) => (
+                    <span key={tag} className="px-2.5 py-1 text-xs font-mono rounded-md bg-primary/10 text-primary border border-primary/20">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </Card>
+            </AnimatedSection>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -649,7 +772,7 @@ function ContactSection() {
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">Location</p>
-                    <p className="text-sm font-medium">615 Zone 4, San Jose City, N.E.</p>
+                    <p className="text-sm font-medium">2339 Taft Ave, Malate, Manila, 1004 Metro Manila</p>
                   </div>
                 </div>
               </div>
@@ -696,6 +819,7 @@ export default function Home() {
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />
+      <ExperienceSection />
       <EducationSection />
       <DifferentiatorSection />
       <ContactSection />
